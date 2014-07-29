@@ -1,0 +1,7 @@
+{
+  "name": "terminal-cool",
+  "version": "0.1.0",
+  "dependencies": {
+    "tty.js": "*"
+  }
+}
