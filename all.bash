@@ -36,7 +36,7 @@ case $1 in
         ;;
 
     "sbrk")
-	TO_RUN=$2
+	TO_RUN=all
 	mkdir -p ~/.docker
 	run() {
 	    NAME="$1"
@@ -66,6 +66,8 @@ case $1 in
 	ARGS=pong   run terminal-cool-emacs-pong   terminal-cool-emacs-app -d -p 12347:8080
 	ARGS=gomoku run terminal-cool-emacs-gomoku terminal-cool-emacs-app -d -p 12348:8080
 	run terminal-cool-nethack terminal-cool-nethack -d -p 12349:8080
+	ARGS=cacademo run terminal-cool-caca-demo terminal-cool-caca -d -p 12350:8080
+	ARGS=cacafire run terminal-cool-caca-fire terminal-cool-caca -d -p 12351:8080
 	exit 0
 	;;
 
