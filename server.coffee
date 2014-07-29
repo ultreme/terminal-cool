@@ -4,26 +4,16 @@ process.title = 'terminal-cool'
 tty = require 'tty.js'
 url = require 'url'
 
-getShellArgs = (session) ->
-  url = url.parse session.req.headers.referer, true
-  query = url.query
-  query_list = []
-  for k, v of query
-    query_list.push k
-    query_list.push v
-  return query_list
-
-# FIXME: try to pass auth token more securely
-
 shell = process.argv[2] || "/bin/bash"
+shellArgs = process.argv[3...]
 
-console.log "shell command is #{shell}"
+console.log "shell command is #{shell} with parameters #{shellArgs}"
 
 config =
   port: 8080
   hostname: "0.0.0.0"
   shell: shell
-  shellArgs: getShellArgs
+  shellArgs: shellArgs
   static: "./static"
   limitGlobal: 100
   limitPerUser: 10

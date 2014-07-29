@@ -17,8 +17,14 @@ case $1 in
 	for file in children/*.Dockerfile; do
 	    name=$(basename $file | cut -d\. -f1)
 	    echo "Compiling child: $name"
-	    cat $file | docker build -t $name -
+	    cat $file | docker build -t terminal-cool-$name -
 	done
+	exit 0
+	;;
+
+    "build-all")
+	$0 build
+	$0 build-children
 	exit 0
 	;;
 
@@ -30,5 +36,5 @@ case $1 in
         ;;
 esac
 
-echo >&2 "usage: $0 [dev|build|build-children|run]"
+echo >&2 "usage: $0 [dev|build|build-children|build-all|run]"
 exit 1
